@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 12.x
 
-      - name: Adding README - French
+      - name: Adding README - Spanish
         uses: dephraiim/translate-readme@main
         with:
           LANG: es
