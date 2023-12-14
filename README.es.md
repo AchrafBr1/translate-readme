@@ -78,8 +78,8 @@ Controlar[aquí](https://github.com/dephraiim/translate-readme/issues/1)para cue
 
 ### Desarrollo
 
-¡Sugerencias y contribuciones siempre son bienvenidas!
+Suggestions and contributions are always welcome!
 
-### LICENCIA
+### LICENSE
 
 [CON](./LICENSE)
