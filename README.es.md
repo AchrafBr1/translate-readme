@@ -72,7 +72,7 @@ Puede configurar la acción aún más con las siguientes opciones:
 
 Los idiomas admitidos se pueden encontrar aquí<https://cloud.google.com/translate/docs/languages>
 
-### Asuntos
+### Issues
 
 Controlar[aquí](https://github.com/dephraiim/translate-readme/issues/1)para cuestiones relacionadas con esta acción.
 
