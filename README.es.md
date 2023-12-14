@@ -13,7 +13,7 @@
 
 Esta es una acción de GitHub que traduce automáticamente el archivo Léame de su repositorio a un idioma específico.
 
-_Una presentación para el[DEV: ¡Acciones de GitHub para código abierto!](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn)hackatón_
+_Una presentación para el[DEV: ¡Acciones de GitHub para código abierto!](https://dev.to/devteam/announcing-the-github-actions-hackathon-on-dev-3ljn) hackathon_
 
 ## Configuración
 
@@ -78,8 +78,8 @@ Controlar[aquí](https://github.com/dephraiim/translate-readme/issues/1)para cue
 
 ### Desarrollo
 
-Suggestions and contributions are always welcome!
+¡Sugerencias y contribuciones siempre son bienvenidas!
 
-### LICENSE
+### LICENCIA
 
 [CON](./LICENSE)
