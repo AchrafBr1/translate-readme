@@ -6,7 +6,7 @@ inputs:
   LANG:
     description: 'The Language you want to translate to'
     required: false
-    default: 'zh-CN'
+    default: 'es'
 
 runs:
   using: 'node12'
