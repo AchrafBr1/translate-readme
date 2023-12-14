@@ -23476,9 +23476,8 @@ const toMarkdown = (ast) => {
 };
 
 const mainDir = ".";
-let README = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"))
-  ? "readme.md"
-  : "README.md";
+let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
+let README = test[0];
 
 const lang = core.getInput("LANG") || "es";
 const readme = readFileSync(join(mainDir, README), { encoding: "utf8" });
