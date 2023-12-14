@@ -16,6 +16,6 @@ jobs:
           node-version: 12.x
 
       - name: Adding README - Spanish
-        uses: dephraiim/translate-readme@main
+        uses: AchrafBr1/translate-readme@main
         with:
           LANG: es
