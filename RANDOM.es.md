@@ -11,6 +11,6 @@ diseño: portada: visible: tamaño real: título principal: visible: verdadero d
 
 ## Aquí puede obtener todos los manuales y guías del sistema VESTA.
 
-#### 🔍 Use the search engine to be able to ask natural questions, for example:
+#### 🔍 Utiliza el buscador para poder hacer preguntas naturales, por ejemplo:
 
 "¿A qué altura debo instalar una PIRCAM?"
