@@ -23478,7 +23478,8 @@ const toMarkdown = (ast) => {
 const mainDir = ".";
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
 let README = test[0];
-
+console.log("Archivo encontrado es: " + README);
+	
 const lang = core.getInput("LANG") || "es";
 const readme = readFileSync(join(mainDir, README), { encoding: "utf8" });
 const readmeAST = toAst(readme);
