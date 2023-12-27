@@ -23501,9 +23501,7 @@ const translatedText = originalText.map(async (text) => {
 async function writeToFile() {
   await Promise.all(translatedText);
   const esDir = join(mainDir, lang); // Ruta completa de la carpeta "ES"
-  if (!fs.existsSync(esDir)) {
-    fs.mkdirSync(esDir);
-}
+
   writeFileSync(
     join(esDir, `RANDOM.${lang}.md`),
     toMarkdown(readmeAST),
