@@ -23509,11 +23509,11 @@ async function writeToFile() {
   const esDir = join(mainDir, lang); // Ruta completa de la carpeta "ES"
 
   writeFileSync(
-    join(esDir, `RANDOM.${lang}.md`),
+    join(esDir, `${model}.${lang}.md`),
     toMarkdown(readmeAST),
     "utf8"
   );
-  console.log(`README.${lang}.md written`);
+  console.log(`${model}.${lang}.md written`);
 }
 
 async function commitChanges(lang) {
@@ -23525,7 +23525,7 @@ async function commitChanges(lang) {
     "41898282+github-actions[bot]@users.noreply.github.com"
   );
   await git.commit(
-    `docs: Added RANDOM."${lang}".md translation`
+    `docs: Added "${model}"."${lang}".md translation`
   );
   console.log("finished commit");
   await git.push();
