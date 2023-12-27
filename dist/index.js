@@ -23475,7 +23475,7 @@ const toMarkdown = (ast) => {
   return unified().use(stringify).stringify(ast);
 };
 
-const mainDir = ".";
+const mainDir = "./ES";
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
 let README = test[0];
 console.log("Archivo encontrado es: " + README);
