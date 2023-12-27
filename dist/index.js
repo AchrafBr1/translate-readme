@@ -23481,7 +23481,7 @@ const model = core.getInput("MODEL") || "README.md";
 
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
 //let README = test[0];
-let README = model;
+let README = model + ".md";
 
 console.log("Archivo encontrado es: " + README);
 	
@@ -23525,7 +23525,7 @@ async function commitChanges(lang) {
     "41898282+github-actions[bot]@users.noreply.github.com"
   );
   await git.commit(
-    `docs: Added "${model}"."${lang}".md translation`
+    `docs: Added "${model}"_"${lang}".md translation`
   );
   console.log("finished commit");
   await git.push();
