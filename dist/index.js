@@ -23476,11 +23476,17 @@ const toMarkdown = (ast) => {
 };
 
 const mainDir = ".";
+const lang = core.getInput("LANG") || "es";
+const model = core.getInput("MODEL") || "README.md";
+
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
-let README = test[0];
+//let README = test[0];
+let README = model;
+
 console.log("Archivo encontrado es: " + README);
 	
-const lang = core.getInput("LANG") || "es";
+
+
 const readme = readFileSync(join(mainDir, README), { encoding: "utf8" });
 const readmeAST = toAst(readme);
 console.log("AST CREATED AND READ");
