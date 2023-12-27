@@ -23475,7 +23475,7 @@ const toMarkdown = (ast) => {
   return unified().use(stringify).stringify(ast);
 };
 
-const mainDir = "./ES";
+const mainDir = ".";
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
 let README = test[0];
 console.log("Archivo encontrado es: " + README);
@@ -23500,8 +23500,12 @@ const translatedText = originalText.map(async (text) => {
 
 async function writeToFile() {
   await Promise.all(translatedText);
+  const esDir = join(mainDir, lang); // Ruta completa de la carpeta "ES"
+  if (!fs.existsSync(esDir)) {
+    fs.mkdirSync(esDir);
+}
   writeFileSync(
-    join(mainDir, `RANDOM.${lang}.md`),
+    join(esDir, `RANDOM.${lang}.md`),
     toMarkdown(readmeAST),
     "utf8"
   );
