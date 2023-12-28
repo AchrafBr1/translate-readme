@@ -23475,9 +23475,10 @@ const toMarkdown = (ast) => {
   return unified().use(stringify).stringify(ast);
 };
 
+/*
 const mainDir = ".";
 const lang = core.getInput("LANG") || "es";
-const model = core.getInput("MODEL") || "README.md";
+const model = core.getInput("MODEL") || ["README"];
 
 let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
 //let README = test[0];
@@ -23547,6 +23548,92 @@ async function translateReadme() {
 }
 
 translateReadme();
+*/ 
+
+const mainDir = ".";
+const lang = core.getInput("LANG") || "es";
+const models = core.getInput("MODEL") || ["README"];
+
+function processModel(model) {
+  let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
+  // let README = test[0];
+  let README = model + ".md";
+
+  console.log("Archivo encontrado es: " + README);
+
+  const readme = readFileSync(join(mainDir, README), { encoding: "utf8" });
+  const readmeAST = toAst(readme);
+  console.log("AST CREATED AND READ");
+
+  let originalText = [];
+
+  visit(readmeAST, (node) => {
+    if (node.type === "text") {
+      originalText.push(node.value);
+      node.value = $(node.value, { to: lang }).text;
+    }
+  });
+
+  const translatedTextPromises = originalText.map((text) => {
+    return $(text, { to: lang }).text;
+  });
+
+  return Promise.all(translatedTextPromises)
+    .then((translatedText) => {
+      const esDir = join(mainDir, lang); // Ruta completa de la carpeta "ES"
+
+      writeFileSync(
+        join(esDir, `${model}_${lang}.md`),
+        toMarkdown(readmeAST),
+        "utf8"
+      );
+      console.log(`${model}_${lang}.md written`);
+    });
+}
+
+function commitChanges(lang) {
+  console.log("commit started");
+  return git.add("./*")
+    .then(() => git.addConfig("user.name", "github-actions[ab_auto]"))
+    .then(() => git.addConfig(
+      "user.email",
+      "41898282+github-actions[bot]@users.noreply.github.com"
+    ))
+    .then(() => git.commit(
+      `docs: Added ${model}_${lang}.md translation`
+    ))
+    .then(() => {
+      console.log("finished commit");
+      return git.raw(['config', 'pull.rebase', 'false']);
+    })
+    .then(() => git.pull())
+    .then(() => {
+      console.log("pulled");
+      return git.push();
+    })
+    .then(() => {
+      console.log("pushed");
+    });
+}
+
+function translateReadme(model) {
+  return processModel(model)
+    .then(() => commitChanges(lang))
+    .then(() => {
+      console.log("Done");
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
+}
+
+// Process each model in the array
+const modelPromises = models.map((model) => translateReadme(model));
+
+Promise.all(modelPromises)
+  .catch((error) => {
+    console.error("Error processing models:", error);
+  });
 
 
 /***/ }),
