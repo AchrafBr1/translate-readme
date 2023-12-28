@@ -23554,6 +23554,11 @@ const mainDir = ".";
 const lang = core.getInput("LANG") || "es";
 const models = core.getInput("MODEL") || ["README"];
 
+// Ensure models is an array
+if (!Array.isArray(models)) {
+  models = [models];
+}
+
 function processModel(model) {
   let test = readdirSync(mainDir).filter((filename) => filename.endsWith(".md"));
   // let README = test[0];
