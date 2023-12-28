@@ -23529,7 +23529,7 @@ async function commitChanges(lang) {
     `docs: Added ${model}_${lang}.md translation`
   );
   console.log("finished commit");
-  await git.pull();
+  await git.pull({ rebase: true });
   console.log("pulled");
   await git.push();
   console.log("pushed");
