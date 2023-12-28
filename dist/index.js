@@ -23500,6 +23500,7 @@ visit(readmeAST, async (node) => {
   }
 });
 
+
 const translatedText = originalText.map(async (text) => {
   return (await $(text, { to: lang })).text;
 });
@@ -23509,11 +23510,11 @@ async function writeToFile() {
   const esDir = join(mainDir, lang); // Ruta completa de la carpeta "ES"
 
   writeFileSync(
-    join(esDir, `${model}.${lang}.md`),
+    join(esDir, `${model}_${lang}.md`),
     toMarkdown(readmeAST),
     "utf8"
   );
-  console.log(`${model}.${lang}.md written`);
+  console.log(`${model}_${lang}.md written`);
 }
 
 async function commitChanges(lang) {
@@ -23525,7 +23526,7 @@ async function commitChanges(lang) {
     "41898282+github-actions[bot]@users.noreply.github.com"
   );
   await git.commit(
-    `docs: Added "${model}"_"${lang}".md translation`
+    `docs: Added ${model}_${lang}.md translation`
   );
   console.log("finished commit");
   await git.push();
